@@ -10,8 +10,8 @@ They'd like a data engineer to create a Postgres database with tables designed t
 # 3/Project description
 Creating a database schema that have fact and dimension tables for a start schema and ETL pipeline for this analysis.
 
-# 4/The schema description, Fact and dimension tables
-- Fact Table
+# 4/The schema description, fact and dimension tables
+- Dimension Table
   - songplays - records in log data associated with song plays i.e. records with page NextSong
     > songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent
 - Fact Table
