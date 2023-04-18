@@ -15,7 +15,7 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
-      - run: echo "text to output here" > output.txt
+      - run: echo "text to output here" > ~/output.txt
       - persist_to_workspace:
           root: ~/
           paths:
