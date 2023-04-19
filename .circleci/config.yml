@@ -4,6 +4,13 @@ version: 2.1
 
 orbs:
   welcome: circleci/welcome-orb@0.4.1
+commands:
+  print-pipeline-id:
+    parameters:
+      id:
+        type: string
+    steps:
+      - run: echo << parameters.id >>
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
@@ -27,12 +34,19 @@ jobs:
       - attach_workspace:
           at: ~/
       - run: cat ~/output.txt
+  my-job:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - print-pipeline-id:
+          id: << pipeline.id >>
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
-      - save-hello-world-output
-      - print-output-file:
-          requires:
-              - save-hello-world-output
+      # - save-hello-world-output
+      # - print-output-file:
+          # requires:
+              #  save-hello-world-output
+      - my-job
